@@ -134,8 +134,12 @@
 </head>
 <body>
     <div class="background-container card-container">
-        <div class="pattern-elements">
-            </div>
+        <div class="audio-toggle-container">
+            <input type="checkbox" id="audioToggle" class="audio-toggle-checkbox" checked>
+            <label for="audioToggle" class="audio-toggle-label">
+                <div class="audio-toggle-icon"></div>
+            </label>
+        </div>
 
         <div class="letter-card">
             <h1>Carta para mi Princesa</h1>
@@ -158,5 +162,67 @@
             <a href="milugarseguro.html" class="back-button">Volver</a>
         </div>
     </div>
+
+    <audio id="background-music" loop>
+        <source src="assets/inicio.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const audio = document.getElementById('background-music');
+            const audioToggle = document.getElementById('audioToggle');
+
+            // --- Lógica de reproducción inicial y manejo del toggle ---
+
+            // Función para intentar reproducir el audio
+            function tryPlayAudio() {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Música iniciada en cartas.html.');
+                    }).catch(error => {
+                        console.log('La reproducción automática fue bloqueada en cartas.html. El usuario deberá interactuar.', error);
+                        // Si se bloquea, desactiva el toggle visualmente y pausa el audio
+                        audioToggle.checked = false;
+                        audio.pause();
+                    });
+                }
+            }
+
+            // Al cargar la página, intenta reproducir si el toggle está checked (por defecto)
+            // Es probable que el navegador bloquee el autoplay en esta nueva navegación.
+            if (audioToggle.checked) {
+                tryPlayAudio();
+            }
+
+            // Manejar el clic en el toggle
+            audioToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    // Si el toggle se activa, intenta reproducir
+                    tryPlayAudio();
+                } else {
+                    // Si el toggle se desactiva, pausa la música
+                    audio.pause();
+                }
+            });
+
+            // Opcional: Si el audio se pausa por alguna razón externa (ej. otra pestaña),
+            // asegura que el toggle se desactive.
+            audio.addEventListener('pause', () => {
+                if (audioToggle.checked) { // Solo si el toggle estaba activo y se pausó externamente
+                    audioToggle.checked = false;
+                }
+            });
+
+            // Opcional: Si el audio se reproduce por alguna razón externa (ej. volvemos a la pestaña),
+            // asegura que el toggle se active.
+            audio.addEventListener('play', () => {
+                if (!audioToggle.checked) { // Solo si el toggle no estaba activo y se reprodujo externamente
+                    audioToggle.checked = true;
+                }
+            });
+        });
+    </script>
 </body>
 </html>

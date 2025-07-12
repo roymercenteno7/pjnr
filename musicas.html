@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestras Músicas</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Estilos específicos para la página de músicas */
+        .music-page-container {
+            width: 100%;
+            max-width: 450px;
+            background: linear-gradient(to bottom,
+                    var(--color-light-blue) 0%, var(--color-light-blue) 30%,
+                    var(--color-light-purple) 30%, var(--color-light-purple) 65%,
+                    var(--color-light-pink) 65%, var(--color-light-pink) 100%);
+            position: relative;
+            padding-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .music-header {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8em;
+            color: var(--color-primary-text);
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .music-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            /* Espacio entre cada tarjeta de música */
+            padding: 0 20px;
+            width: 100%;
+            align-items: center;
+            margin-bottom: 40px;
+            /* Espacio antes del botón de volver */
+            position: relative;
+            z-index: 2;
+        }
+
+        .music-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            width: calc(100% - 40px);
+            /* Ajusta para padding */
+            max-width: 380px;
+            /* Ancho máximo para las tarjetas de música */
+            text-align: center;
+            position: relative;
+        }
+
+        .music-card::before {
+            /* Cinta decorativa superior */
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-7deg);
+            width: 80px;
+            height: 20px;
+            background-color: var(--color-link-blue);
+            /* Color azul */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+        }
+
+        .music-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            color: var(--color-primary-text);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            /* Bordes redondeados para el reproductor */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            /* Quita el borde del iframe */
+        }
+
+        .back-button-container {
+            margin-top: 30px;
+            margin-bottom: 40px;
+            z-index: 2;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--color-link-pink);
+            /* Color similar a un botón */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .back-button:hover {
+            background-color: #d88faa;
+        }
+
+        .back-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-container music-page-container">
+        <h1 class="music-header">Nuestras Melodías</h1>
+
+        <div class="music-cards-container">
+            <div class="music-card">
+                <h3>Nuestra Canción Especial</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/2QHjE_EqVVU?si=n0vqYv7vgz85Yr4o"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="music-card">
+                <h3>Momentos Felices</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dH7_By3Y2i0?si=JoTDRnyqQwKX2MO-"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="music-card">
+                <h3>Playlist de Recuerdos</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/c6du9gSEDu8?si=CdN2ima-SiaQVJ95"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="back-button-container">
+            <a href="milugarseguro.html" class="back-button">Volver</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
