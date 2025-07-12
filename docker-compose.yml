@@ -2,15 +2,12 @@ version: '3.8'
 
 services:
   web:
-    image: nginx:stable-alpine
-    container_name: landing_page_nginx
+    build: . # Docker Compose buscará un Dockerfile en el directorio actual (pjnr/)
+    container_name: landing_page_nginx_custom
     ports:
-      - "80:80" # O "- "9027:80"" si necesitas el puerto 9027 en el host
-    volumes:
-      # Mapea la carpeta raíz de tu repositorio (index.html, style.css, assets)
-      - ./:/usr/share/nginx/html          
-      
-      # Monta tu archivo de configuración en el subdirectorio conf.d de Nginx.
-      # ¡ESTA ES LA CLAVE PARA SOLUCIONAR EL ERROR!
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro 
+      - "9027:80" # O "- "9027:80"" si necesitas el puerto 9027 en el host
     restart: always
+    # Los volúmenes ya NO son necesarios para los archivos HTML y la configuración de Nginx,
+    # porque estos archivos ya se COPIAN dentro de la imagen durante la construcción del Dockerfile.
+    # Esto elimina el problema de montaje que estás experimentando.
+    # Si en el futuro necesitas un volumen para datos persistentes (ej. una base de datos), sí se usarían.
