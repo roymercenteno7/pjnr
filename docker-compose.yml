@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:stable-alpine
+    container_name: landing_page_nginx
+    ports:
+      - "9027:80"
+    volumes:
+      - ./html:/usr/share/nginx/html # Monta tu carpeta 'html' en el contenedor
+    restart: always
+    # Hemos eliminado 'read_only: true' para permitir a Nginx escribir en su caché temporal.
+    # Si quieres mantener la seguridad, y sabes que rutas Nginx necesita escribir,
+    # puedes mapear volúmenes específicos para esas rutas en lugar de quitar read_only.
+    # Pero para una landing page sencilla, esta es la solución más práctica.
