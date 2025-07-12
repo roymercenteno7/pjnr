@@ -1,0 +1,300 @@
+/* Variables para colores, haciendo fácil su modificación */
+:root {
+    --color-light-blue: #D6EAF8; /* Azul claro de fondo */
+    --color-light-purple: #E0BBE4; /* Morado claro de fondo */
+    --color-light-pink: #F8DAE9; /* Rosa claro de fondo */
+    --color-yellow: #F7E7C5; /* Amarillo claro (para cintas y patrones) */
+    --color-green-dot: #B9E6A7; /* Verde para puntos del papel */
+    --color-dark-text: #333; /* Texto general */
+    --color-primary-text: #5A4E80; /* Texto principal oscuro (botones, "algo diferente") */
+    --color-link-blue: #84DCC6; /* Subrayado y flor azul */
+    --color-link-purple: #B68CBD; /* Subrayado de cartas */
+    --color-link-pink: #F8B3C9; /* Subrayado de musicas y cinta superior */
+    /* --color-text-over-image: #5A4E80; -- Esta variable ya no es necesaria */
+    --color-dots-pattern: #AEC6CF; /* Color para los puntos de patrón en el fondo */
+}
+
+/* Estilos Generales del cuerpo de la página */
+body {
+    font-family: 'Poppins', sans-serif; /* Fuente principal */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Centra el contenedor principal horizontalmente */
+    align-items: flex-start; /* Alinea el contenido al inicio verticalmente (permite scroll) */
+    min-height: 100vh; /* Ocupa al menos toda la altura de la ventana */
+    background-color: var(--color-light-blue); /* Color de fondo base */
+    overflow-x: hidden; /* Evita el scroll horizontal */
+    position: relative; /* Para el borde inferior */
+}
+
+/* Contenedor principal de la landing page con degradado y patrones */
+.background-container {
+    width: 100%;
+    max-width: 450px; /* Ancho máximo para el diseño móvil */
+    background: linear-gradient(to bottom,
+        var(--color-light-blue) 0%, var(--color-light-blue) 30%,
+        var(--color-light-purple) 30%, var(--color-light-purple) 65%,
+        var(--color-light-pink) 65%, var(--color-light-pink) 100%
+    );
+    position: relative;
+    padding-bottom: 20px; /* Espacio para el borde inferior */
+    overflow: hidden; /* Para contener los patrones que se extienden */
+}
+
+/* Patrones decorativos de puntos y formas usando pseudo-elementos */
+.background-container::before,
+.background-container::after {
+    content: '';
+    position: absolute;
+    z-index: 0; /* Detrás del contenido principal */
+    opacity: 0.6; /* Un poco transparentes */
+}
+
+/* Patrón de puntos azules */
+.background-container::before {
+    top: 5%;
+    right: 5%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 10% 10%, var(--color-dots-pattern) 5%, transparent 5%),
+                radial-gradient(circle at 70% 30%, var(--color-dots-pattern) 5%, transparent 5%),
+                radial-gradient(circle at 30% 90%, var(--color-dots-pattern) 5%, transparent 5%),
+                radial-gradient(circle at 90% 70%, var(--color-dots-pattern) 5%, transparent 5%);
+    background-size: 20px 20px; /* Tamaño de cada punto */
+}
+
+/* Patrón de formas amarillas */
+.background-container::after {
+    bottom: 25%;
+    left: 5%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at 20% 80%, var(--color-yellow) 10%, transparent 10%),
+                radial-gradient(circle at 80% 20%, var(--color-yellow) 10%, transparent 10%),
+                radial-gradient(ellipse at 50% 50%, var(--color-yellow) 10%, transparent 10%);
+    background-size: 30px 30px; /* Tamaño de cada forma */
+    transform: rotate(15deg); /* Ligera rotación */
+}
+
+/* Borde inferior azul claro fijo */
+body::after {
+    content: '';
+    position: fixed; /* Fijo en la parte inferior de la pantalla */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px; /* Grosor del borde */
+    background-color: var(--color-light-blue);
+    z-index: 100; /* Asegura que esté por encima de todo */
+}
+
+/* Estilo para la "flor" azul en la parte inferior izquierda */
+.flower-decoration {
+    position: absolute;
+    bottom: 20px; /* Ajusta la posición de la flor */
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-link-blue); /* Color base de la flor */
+    border-radius: 50%; /* Centro de la flor */
+    box-shadow: 0 0 0 5px rgba(132, 220, 198, 0.5), /* Pétalos */
+                -10px -10px 0 0 rgba(132, 220, 198, 0.5),
+                10px -10px 0 0 rgba(132, 220, 198, 0.5),
+                -10px 10px 0 0 rgba(132, 220, 198, 0.5),
+                10px 10px 0 0 rgba(132, 220, 198, 0.5);
+    z-index: 1; /* Para que esté sobre el fondo */
+    opacity: 1;
+}
+
+
+/* Bloque Superior: Contiene la tarjeta de imagen y la tarjeta de texto */
+.top-block {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding: 20px;
+    padding-top: 40px; /* Espacio superior para la foto */
+    position: relative;
+    z-index: 1; /* Asegura que este bloque esté sobre los patrones de fondo */
+}
+
+/* Tarjeta de la imagen */
+.image-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    margin-bottom: 30px; /* Espacio entre imagen y tarjeta de texto */
+    width: 90%; /* Ocupa el 90% del ancho del .top-block */
+    max-width: 300px; /* Máximo 300px de ancho */
+}
+
+/* Imagen dentro de la tarjeta */
+.image-card img {
+    max-width: 100%; /* Asegura que la imagen no se salga de su contenedor */
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    display: block; /* Elimina espacio extra debajo de la imagen (común con imágenes) */
+}
+
+/* Se ha eliminado el estilo para .overlay-text-top */
+
+/* Contenedor de la tarjeta de texto ("algo diferente") */
+.text-card-container {
+    width: 90%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Para que las "cintas" queden por encima */
+}
+
+/* Cintas decorativas en la tarjeta de texto */
+.tape-top, .tape-bottom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 20px;
+    background-color: var(--color-light-pink); /* Color de la cinta */
+    border-radius: 5px;
+    z-index: 3; /* Asegura que la cinta esté por encima de la tarjeta */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tape-top {
+    top: -10px; /* La mitad de la cinta sobresale por arriba */
+    transform: translateX(-50%) rotate(-5deg); /* Ligera rotación */
+}
+
+.tape-bottom {
+    bottom: -10px; /* La mitad de la cinta sobresale por abajo */
+    transform: translateX(-50%) rotate(5deg); /* Ligera rotación */
+}
+
+/* Estilos para el título "algo diferente" */
+.text-card h2 {
+    font-family: 'Dancing Script', cursive; /* Fuente específica para el título */
+    font-size: 2.2em;
+    color: var(--color-primary-text); /* O usar var(--color-dark-text) si se prefiere más oscuro */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Estilos para el párrafo de texto principal */
+.text-card p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: var(--color-dark-text);
+    margin: 0;
+}
+
+/* Bloque Inferior: Contiene la tarjeta de papel con los botones */
+.bottom-block {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 60px; /* Espacio para que no se pegue al bloque superior */
+    position: relative;
+    z-index: 1; /* Asegura que este bloque esté sobre los patrones de fondo */
+}
+
+/* Tarjeta de papel para los botones */
+.paper-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 300px; /* Ancho máximo para la tarjeta de papel */
+    position: relative;
+}
+
+/* Puntos decorativos en la parte superior de la tarjeta de papel */
+.paper-dots {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Espacio entre los puntos */
+}
+
+.paper-dots span {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-green-dot);
+    border-radius: 50%;
+}
+
+/* Cinta decorativa en la parte superior de la tarjeta de papel */
+.tape-top-paper {
+    position: absolute;
+    top: -10px; /* La mitad de la cinta sobresale por arriba */
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 100px;
+    height: 20px;
+    background-color: var(--color-yellow); /* Color de la cinta */
+    border-radius: 5px;
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Sección que contiene los botones */
+.button-section {
+    display: flex;
+    flex-direction: column; /* Botones apilados verticalmente */
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio debajo de los puntos */
+}
+
+/* Estilos base para los enlaces/botones */
+.button-link {
+    display: block; /* Ocupa todo el ancho disponible */
+    text-align: center;
+    padding: 15px 20px;
+    background-color: #fff; /* Fondo del botón (podría ser transparente o un color ligero) */
+    border: none;
+    border-radius: 10px;
+    text-decoration: none; /* Quita el subrayado predeterminado */
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--color-primary-text); /* Color del texto del botón */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave */
+    transition: transform 0.2s, box-shadow 0.2s; /* Transición suave al interactuar */
+    position: relative; /* Necesario para el subrayado con ::after */
+}
+
+/* Subrayado inferior decorativo para los botones */
+.button-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5px; /* Posición del subrayado */
+    height: 3px;
+    width: 60%; /* Ancho del subrayado */
+    border-radius: 2px;
+}
+
+/* Colores específicos para el subrayado de cada botón */
+.button-link.musicas::after { background-color: var(--color-link-pink); }
+.button-link.fotos::after { background-color: var(--color-link-blue); }
+.button-link.cartas::after { background-color: var(--color-link-purple); }
+
+/* Efecto al presionar un botón */
+.button-link:active {
+    transform: scale(0.98); /* Ligeramente más pequeño */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Sombra más sutil */
+}
+
+/* Estilo para el cursor del mouse (opcional, para replicar el de la imagen) */
+/* body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="%23A9A9A9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mouse-pointer"><path d="M3 3l7.07 7.07L12 21l2.93-2.93L21 12 3 3z"></path></svg>') 0 0, auto;
+} */
