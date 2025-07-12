@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta para Angélica</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para la página de cartas */
+        .card-container {
+            width: 100%;
+            max-width: 450px;
+            background: linear-gradient(to bottom,
+                var(--color-light-blue) 0%, var(--color-light-blue) 30%,
+                var(--color-light-purple) 30%, var(--color-light-purple) 65%,
+                var(--color-light-pink) 65%, var(--color-light-pink) 100%
+            );
+            position: relative;
+            padding-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .letter-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 20px 20px 20px; /* Margen superior más grande */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            max-width: 380px; /* Ancho máximo para la carta */
+            width: calc(100% - 40px); /* Ajusta para padding */
+            position: relative;
+            z-index: 2;
+            text-align: left; /* Alineación de texto a la izquierda para la carta */
+            line-height: 1.6;
+        }
+
+        .letter-card::before { /* Cinta decorativa superior */
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-7deg);
+            width: 100px;
+            height: 25px;
+            background-color: var(--color-link-pink); /* Color rosa similar a las cintas */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 3;
+        }
+
+        .letter-card::after { /* Cinta decorativa inferior */
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(7deg);
+            width: 100px;
+            height: 25px;
+            background-color: var(--color-yellow); /* Color amarillo similar a las cintas */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 3;
+        }
+
+        .letter-card h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8em;
+            color: var(--color-primary-text);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .letter-content {
+            font-family: 'Poppins', sans-serif; /* Usamos Poppins para la legibilidad del cuerpo de la carta */
+            font-size: 1em;
+            color: var(--color-dark-text);
+            margin-bottom: 20px;
+        }
+
+        .letter-content p {
+            margin-bottom: 1em; /* Espacio entre párrafos */
+            text-indent: 1.5em; /* Sangría en la primera línea de cada párrafo */
+        }
+        
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6em;
+            color: var(--color-primary-text);
+            font-weight: 700;
+            line-height: 1.2; /* Espacio entre líneas de la firma */
+        }
+
+        .signature .att {
+            font-family: 'Poppins', sans-serif; /* Fuente más sencilla para "Att Pedro" */
+            font-size: 0.8em;
+            font-weight: 400;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .back-button-container {
+            margin-top: 30px;
+            margin-bottom: 40px;
+            z-index: 2;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--color-link-purple); /* Color similar a un botón */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .back-button:hover {
+            background-color: #9d6baa;
+        }
+        .back-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container card-container">
+        <div class="pattern-elements">
+            </div>
+
+        <div class="letter-card">
+            <h1>Carta para mi Princesa</h1>
+            <div class="letter-content">
+                <p>Mi querida princesa,</p>
+                <p>Mientras escribo esto, no puedo evitar sonreír al pensar en el futuro que nos espera. Cada día que pasa me acerco más a ese momento soñado, la emoción que siento es indescriptible.</p>
+                <p>Desde el momento en que te conocí, supe que había algo increíblemente especial en ti. Tu risa contagiosa, la luz en tus ojos cuando te apasiona algo, tu amabilidad inagotable y la fuerza silenciosa que posees, todo en ti me cautivó. Eres mi refugio, mi mayor alegría y la persona que me inspira a ser la mejor versión de mí mismo.</p>
+                <p>Sé que la vida nos presentará desafíos, pero no hay nadie más con quien prefiera enfrentarlos que contigo. Contigo a mi lado, cada obstáculo parece menos desalentador y cada victoria se siente más dulce. No puedo esperar para construir una vida juntos, llena de risas, aventuras, comprensión mutua y un amor que crezca más profundo con cada año que pase.</p>
+                <p>Prometo quererte incondicionalmente, apoyarte en tus sueños, escucharte con el corazón abierto y ser tu compañero más fiel. Prometo que siempre haré lo mejor que pueda para hacerte sentir amada, valorada y feliz.</p>
+                <p>Angélica, te haz vuelto muy especial en mi vida, no puedo negarte que estoy contando los días para volver y poder compartir mucho mas contigo.</p>
+            </div>
+            <div class="signature">
+                <p>Con todo mi amor,</p>
+                <p>te quiero mucho</p>
+                <p class="att">Att pedro</p>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="milugarseguro.html" class="back-button">Volver</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -3,39 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Refugio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Acceso Restringido</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #D6EAF8, #E0BBE4, #F8DAE9); /* Degradado similar a tu index */
+            margin: 0;
+            color: #333;
+            text-align: center;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .login-container::before { /* Cinta superior */
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-5deg);
+            width: 80px;
+            height: 20px;
+            background-color: #F8B3C9; /* Color de cinta rosa */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .login-container::after { /* Cinta inferior */
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(5deg);
+            width: 80px;
+            height: 20px;
+            background-color: #F7E7C5; /* Color de cinta amarillo */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #5A4E80;
+            font-size: 2.5em;
+            margin-bottom: 25px;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        input[type="password"] {
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: calc(100% - 30px); /* Ajusta para padding */
+            font-size: 1.1em;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input[type="password"]:focus {
+            border-color: #84DCC6; /* Color de resalte al enfocar */
+        }
+        button {
+            background-color: #84DCC6; /* Color de botón similar a tus enlaces */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        button:hover {
+            background-color: #6fbba8;
+        }
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .error-message {
+            color: #d9534f; /* Rojo para mensajes de error */
+            margin-top: 15px;
+            font-weight: 600;
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-container">
-        <div class="top-block">
-            <div class="image-card">
-                <img src="assets/imagen.png" alt="Familia">
-            </div>
-            <div class="text-card-container">
-                <div class="tape-top"></div>
-                <div class="text-card">
-                    <h2>Algo diferente</h2>
-                    <p>Este es un espacio de refugio, donde espero que puedas disfrutar y entender que estoy ahí aun contigo te quiero</p>
-                </div>
-                <div class="tape-bottom"></div>
-            </div>
-        </div>
-
-        <div class="bottom-block">
-            <div class="paper-card">
-                <div class="paper-dots">
-                    <span></span><span></span><span></span><span></span>
-                </div>
-                <div class="tape-top-paper"></div>
-                <div class="button-section">
-                    <a href="#" class="button-link musicas">musicas</a>
-                    <a href="#" class="button-link fotos">fotos</a>
-                    <a href="#" class="button-link cartas">cartas</a>
-                </div>
-            </div>
-        </div>
+    <div class="login-container">
+        <h1>Acceso Secreto</h1>
+        <p>Por favor, introduce la contraseña:</p>
+        <input type="password" id="passwordInput" placeholder="Contraseña">
+        <button onclick="checkPassword()">Entrar</button>
+        <p id="errorMessage" class="error-message"></p>
     </div>
+
+    <script>
+        function checkPassword() {
+            // ¡¡IMPORTANTE: CAMBIA ESTO POR TU CONTRASEÑA REAL!!
+            const correctPassword = "070625"; 
+            const passwordInput = document.getElementById("passwordInput");
+            const errorMessage = document.getElementById("errorMessage");
+
+            if (passwordInput.value === correctPassword) {
+                // Contraseña correcta, redirigir a milugarseguro.html
+                window.location.href = "milugarseguro.html"; 
+            } else {
+                // Contraseña incorrecta, mostrar mensaje de error
+                errorMessage.textContent = "Contraseña incorrecta. Inténtalo de nuevo.";
+                passwordInput.value = ""; // Limpiar el campo
+                passwordInput.focus(); // Poner el foco de nuevo
+            }
+        }
+
+        // Permitir presionar Enter para enviar la contraseña
+        document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
 </body>
 </html>
