@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta para Angélica</title>
+    <title>Cartas para Angélica</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -24,11 +24,53 @@
             align-items: center;
         }
 
+        /* --- Estilos para las Pestañas --- */
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px; /* Espacio superior para los botones de las pestañas */
+            margin-bottom: 20px; /* Espacio inferior entre botones y contenido de la carta */
+            width: calc(100% - 40px); /* Ajusta para el padding del contenedor */
+            max-width: 380px; /* Alinea con el ancho de la carta */
+            z-index: 3; /* Asegura que estén por encima del fondo */
+            flex-wrap: wrap; /* Permite que las pestañas se envuelvan en pantallas pequeñas */
+        }
+
+        .tab-button {
+            background-color: var(--color-light-purple); /* Color base para los botones */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px 8px 0 0; /* Bordes redondeados solo arriba */
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin: 0 5px; /* Espacio entre botones */
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            white-space: nowrap; /* Evita que el texto del botón se rompa */
+        }
+
+        .tab-button:hover {
+            background-color: #9d6baa; /* Un poco más oscuro al pasar el ratón */
+        }
+
+        .tab-button.active {
+            background-color: var(--color-link-blue); /* Color diferente para la pestaña activa */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transform: translateY(-2px); /* Ligeramente elevado */
+            z-index: 4; /* Asegura que la pestaña activa esté un poco más al frente */
+        }
+        /* Fin Estilos para las Pestañas */
+
+
         .letter-card {
             background-color: #fff;
             border-radius: 15px;
             padding: 30px;
-            margin: 40px 20px 20px 20px; /* Margen superior más grande */
+            /* margin: 40px 20px 20px 20px; */ /* Eliminamos el margen superior grande aquí */
+            margin: 0 20px 20px 20px; /* Ajustamos el margen ya que los botones ahora manejan el espacio superior */
             box-shadow: 0 8px 16px rgba(0,0,0,0.15);
             max-width: 380px; /* Ancho máximo para la carta */
             width: calc(100% - 40px); /* Ajusta para padding */
@@ -148,6 +190,15 @@
             transform: translateY(2px);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+
+        /* Estilos para ocultar/mostrar paneles de pestañas */
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -159,28 +210,87 @@
             </label>
         </div>
 
-        <div class="letter-card">
-            <h1>Carta para mi Princesa</h1>
-            <div class="letter-content">
-                <p>Mi querida princesa,</p>
-                <p>Mientras escribo esto, no puedo evitar sonreír al pensar en el futuro que nos espera. Cada día que pasa me acerco más a ese momento soñado, la emoción que siento es indescriptible.</p>
-                <p>Desde el momento en que te conocí, supe que había algo increíblemente especial en ti. Tu risa contagiosa, la luz en tus ojos cuando te apasiona algo, tu amabilidad inagotable y la fuerza silenciosa que posees, todo en ti me cautivó. Eres mi refugio, mi mayor alegría y la persona que me inspira a ser la mejor versión de mí mismo.</p>
-                <p>Sé que la vida nos presentará desafíos, pero no hay nadie más con quien prefiera enfrentarlos que contigo. Contigo a mi lado, cada obstáculo parece menos desalentador y cada victoria se siente más dulce. No puedo esperar para construir una vida juntos, llena de risas, aventuras, comprensión mutua y un amor que crezca más profundo con cada año que pase.</p>
-                <p>Prometo quererte incondicionalmente, apoyarte en tus sueños, escucharte con el corazón abierto y ser tu compañero más fiel. Prometo que siempre haré lo mejor que pueda para hacerte sentir amada, valorada y feliz.</p>
-                <p>Angélica, te haz vuelto muy especial en mi vida, no puedo negarte que estoy contando los días para volver y poder compartir mucho mas contigo.</p>
-                
-                <p>Esto ahora mismo es un sueño, pero podríamos convertirlo en una meta. Y sí, podrías hacer planes para lograrlo.</p>
-                <a href="https://www.churchofjesuschrist.org/study/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world?lang=spa" 
-                   target="_blank" class="proclamation-link">
-                   Haz clic aquí para leer algo hermoso que nos ayudará en este camino.
-                </a>
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="letter1">Carta 1</button>
+            <button class="tab-button" data-tab="letter2">Carta 2</button>
+            <button class="tab-button" data-tab="letter3">Carta Especial</button>
             </div>
-            <div class="signature">
-                <p>Con todo mi amor,</p>
-                <p>te quiero mucho</p>
-                <p class="att">Att pedro</p>
+
+        <div class="tab-content">
+            <div id="letter1" class="tab-pane active">
+                <div class="letter-card">
+                    <h1>Carta para mi Princesa</h1>
+                    <div class="letter-content">
+                        <p>Mi querida princesa,</p>
+                        <p>Mientras escribo esto, no puedo evitar sonreír al pensar en el futuro que nos espera. Cada día que pasa me acerco más a ese momento soñado, la emoción que siento es indescriptible.</p>
+                        <p>Desde el momento en que te conocí, supe que había algo increíblemente especial en ti. Tu risa contagiosa, la luz en tus ojos cuando te apasiona algo, tu amabilidad inagotable y la fuerza silenciosa que posees, todo en ti me cautivó. Eres mi refugio, mi mayor alegría y la persona que me inspira a ser la mejor versión de mí mismo.</p>
+                        <p>Sé que la vida nos presentará desafíos, pero no hay nadie más con quien prefiera enfrentarlos que contigo. Contigo a mi lado, cada obstáculo parece menos desalentador y cada victoria se siente más dulce. No puedo esperar para construir una vida juntos, llena de risas, aventuras, comprensión mutua y un amor que crezca más profundo con cada año que pase.</p>
+                        <p>Prometo quererte incondicionalmente, apoyarte en tus sueños, escucharte con el corazón abierto y ser tu compañero más fiel. Prometo que siempre haré lo mejor que pueda para hacerte sentir amada, valorada y feliz.</p>
+                        <p>Angélica, te haz vuelto muy especial en mi vida, no puedo negarte que estoy contando los días para volver y poder compartir mucho mas contigo.</p>
+                        
+                        <p>Esto ahora mismo es un sueño, pero podríamos convertirlo en una meta. Y sí, podrías hacer planes para lograrlo.</p>
+                        <a href="https://www.churchofjesuschrist.org/study/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world?lang=spa" 
+                           target="_blank" class="proclamation-link">
+                           Haz clic aquí para leer algo hermoso que nos ayudará en este camino.
+                        </a>
+                    </div>
+                    <div class="signature">
+                        <p>Con todo mi amor,</p>
+                        <p>te quiero mucho</p>
+                        <p class="att">Att pedro</p>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div id="letter2" class="tab-pane">
+                <div class="letter-card">
+                    <h1>Momentos a tu lado</h1>
+                    <div class="letter-content">
+                        <p>Mi dulce Angélica,</p>
+                        <p>Desde que te conocí, mi mundo se llenó de un color que no sabía que existía. Cada momento a tu lado es un tesoro, una nueva aventura que atesoro en mi corazón. Tu presencia ilumina mis días y me da la fuerza para enfrentar cualquier cosa.</p>
+                        <p>Estoy emocionado por los caminos que aún nos quedan por explorar juntos, por las risas que compartiremos y los sueños que construiremos. Contigo, el futuro se ve brillante y lleno de posibilidades infinitas.</p>
+                        <p>Gracias por ser tú, por tu amor, tu comprensión y tu infinita paciencia. Eres el mejor regalo que la vida me ha dado.</p>
+                    </div>
+                    <div class="signature">
+                        <p>Siempre tuyo,</p>
+                        <p>Con amor</p>
+                        <p class="att">Att Pedro</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="letter3" class="tab-pane">
+                <div class="letter-card">
+                    <h1>Un Día Especial para Nosotros</h1>
+                    <div class="letter-content">
+                        <p>Quiero escribirte esto hoy porque será un día especial. Hoy haré algo que jamás en la vida había hecho: seguir escribiendo cartas y expresar mi amor por ti por este medio. Es algo bonito y me siento bien, así que, bueno, ¡comencemos contándote un poco sobre esta caja!</p>
+                        <p>Dentro de ella hay muchas cosas para disfrutar de distintas maneras, así que ahí voy:</p>
+                        <p>Este **llavero** espero que siempre pueda ir contigo y puedas recordar siempre que ahí estaré, una y otra vez, escogiéndote, y bueno, eso es algo maravilloso. El QR es funcional y puedes escanearlo para entrar a tu **lugar seguro** que frecuentemente se estará actualizando.</p>
+                        <p>Hay algo de **dulces** para que puedas disfrutar de algo rico mientras lees todas estas cosas.</p>
+                        <p>Tienes estas **Escrituras** que son para ti, y espero que puedas leerlas y disfrutar de ellas. Refúgiate en ellas cuando me extrañes, solo léelas, entra en ellas, cuídalas como nunca, son solo tuyas (obvio, viene con el kit completo, jajajaja, tienes las cintas para marcar tus Escrituras favoritas y los resaltadores de Escrituras). Cuídalas que luego las tendremos en nuestra casa y serán para nosotros.</p>
+                        <p>Dejaré aquí en esta caja también unos **collares** que son para que siempre puedas recordarme, pero más que eso, para que también puedas recordar las cosas maravillosas que has hecho y las que estamos por hacer. Esos grandes convenios que haremos en el Templo son maravillosos.</p>
+                        <p>Dejaré un **aceitero con aceite consagrado** para ti, y espero puedas guardarlo y recordar que ahora ya tendrás en tu hogar un caballero digno poseedor del sacerdocio ordenado en oficio de élder. Y recuerda que está lleno de aceite de oliva, que es la sustancia más pura que tenemos en la tierra.</p>
+                        <p>Una **lámpara** que debes llevar siempre a donde duermas y dormir con ella a tu lado para que puedas recordar ese sueño que tenemos que cumplir y por el que nos esforzaremos.</p>
+                        <p>Ahora viene lo más importante de todo esto:</p>
+                        <p>Adentro hay unas **placas misionales**, y todas te pertenecen. Hablemos un poco de ellas:</p>
+                        <ul>
+                            <li>La **placa negra con tu nombre** es algo simbólico porque has cumplido con tu objetivo como misionera, y realmente, a pesar de que no fuiste a una misión, quiero que sepas que eres y serás siempre una misionera. Luego verás el porqué.</li>
+                            <li>La **placa dorada con tu nombre** es porque eres la mejor y única misionera, y no podría dejar de pensar en lo maravilloso que serán todos esos hijos que tendremos al verlos partir al campo misional.</li>
+                            <li>Y bueno, **mis placas**, para que recuerdes que es algo que haremos juntos y siempre me lleves contigo a donde puedas ir.</li>
+                        </ul>
+                        <p>Hay un **forro para tu teléfono** donde me podrás llevar siempre, porque también hay unas fotos y ahí me recordarás siempre. Atrás de las fotos está el día que nos conocimos y mi huella para que puedas recordarme siempre.</p>
+                        <p>Estaré llenando cada vez que pueda la **cartuchera del primer regalo** con cositas de esas para que siempre puedas hacer tus rutinas de skincare y esas cosas lindas que haces.</p>
+                        <p>Y bueno, ahora, ¡quedarás algo sorprendida cuando veas mi **Bendición Patriarcal**! Es ahí donde me entrego a ti. Estúdiala y léela mucho, busca las cosas que tenemos en común, disfruta de esto y mucho más.</p>
+                        <p>¡Te quiero mucho mi princesa hermosa! ¡Jamás me olvides por nada del mundo!</p>
+                    </div>
+                    <div class="signature">
+                        <p>Con todo mi amor,</p>
+                        <p>te quiero mucho</p>
+                        <p class="att">Att Pedro</p>
+                    </div>
+                </div>
+            </div>
+            </div>
 
         <div class="back-button-container">
             <a href="milugarseguro.html" class="back-button">Volver</a>
@@ -196,6 +306,24 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const audio = document.getElementById('background-music');
             const audioToggle = document.getElementById('audioToggle');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            // --- Lógica para las Pestañas ---
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remover 'active' de todos los botones y paneles
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                    // Añadir 'active' al botón clickeado
+                    button.classList.add('active');
+
+                    // Mostrar el panel correspondiente
+                    const targetTab = button.dataset.tab;
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
 
             // --- Lógica de reproducción inicial y manejo del toggle ---
 
