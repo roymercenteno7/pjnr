@@ -30,6 +30,9 @@
             min-height: 100vh;
             padding: 20px 0; /* Espacio superior e inferior para el contenido */
             box-sizing: border-box;
+            /* Asegúrate de que el body no tenga un overflow:hidden aquí,
+               ya que podría impedir que las burbujas salgan de la vista */
+            overflow: auto; /* o 'visible' si prefieres */
         }
 
         /* Contenedor principal de la tarjeta/fondo */
@@ -100,7 +103,7 @@
         .audio-toggle-checkbox:checked + .audio-toggle-label .audio-toggle-icon {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234A4A68"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .9-.2 1.75-.54 2.54l1.49 1.49C20.36 14.65 21 13.33 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.81 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.28 4.28c-.9.69-1.93 1.25-3.04 1.69l1.26 1.26c1.67-.45 3.19-1.46 4.5-2.73L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>'); /* Icono de silencio */
         }
-        
+
         /* --- Estilos para las Pestañas (ajustados para móvil) --- */
         .tab-buttons {
             display: flex;
@@ -197,7 +200,7 @@
             font-weight: 700;
             word-wrap: break-word; /* Asegura que títulos largos se rompan si es necesario */
         }
-        
+
         .letter-content {
             font-family: 'Poppins', sans-serif;
             font-size: 0.95em;
@@ -210,7 +213,7 @@
             text-indent: 1.2em;
             word-wrap: break-word; /* Asegura que palabras largas se rompan */
         }
-        
+
         /* Estilos para el enlace de la proclamación */
         .proclamation-link {
             display: block;
@@ -307,6 +310,59 @@
                 font-size: 0.9em; /* Mantener la legibilidad */
             }
         }
+
+        /* --- ESTILOS PARA LOS CORAZONES (BUBBLES) --- */
+        .bubble {
+            position: absolute;
+            width: 10vw;
+            height: 10vw;
+            min-width: 70px;
+            min-height: 70px;
+            max-width: 150px;
+            max-height: 150px;
+            color: #3a8de0; /* Color del borde de la burbuja/corazón */
+            border-radius: 50%; /* Esto es para la burbuja exterior */
+            pointer-events: none; /* Crucial para que no bloquee clics en el contenido subyacente */
+            z-index: 999; /* Asegura que estén por encima de todo */
+        }
+
+        .bubble-dummy {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: inherit;
+            border: .2em solid currentColor;
+            /* La animación bubbleUp se aplicará con JS */
+        }
+
+        @keyframes bubbleUp {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+        }
+
+        .heart {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .heart path {
+            fill: #e27373; /* Color del corazón SVG */
+            stroke: none;
+        }
     </style>
 </head>
 <body>
@@ -322,7 +378,8 @@
             <button class="tab-button active" data-tab="letter1">Carta 1</button>
             <button class="tab-button" data-tab="letter2">Carta 2</button>
             <button class="tab-button" data-tab="letter3">Caja de Sorpresas</button>
-            </div>
+            <button class="tab-button" data-tab="letter4">Flores sorpresa</button>
+        </div>
 
         <div class="tab-content">
             <div id="letter1" class="tab-pane active">
@@ -335,9 +392,9 @@
                         <p>Sé que la vida nos presentará desafíos, pero no hay nadie más con quien prefiera enfrentarlos que contigo. Contigo a mi lado, cada obstáculo parece menos desalentador y cada victoria se siente más dulce. No puedo esperar para construir una vida juntos, llena de risas, aventuras, comprensión mutua y un amor que crezca más profundo con cada año que pase.</p>
                         <p>Prometo quererte incondicionalmente, apoyarte en tus sueños, escucharte con el corazón abierto y ser tu compañero más fiel. Prometo que siempre haré lo mejor que pueda para hacerte sentir amada, valorada y feliz.</p>
                         <p>Angélica, te haz vuelto muy especial en mi vida, no puedo negarte que estoy contando los días para volver y poder compartir mucho mas contigo.</p>
-                        
+
                         <p>Esto ahora mismo es un sueño, pero podríamos convertirlo en una meta. Y sí, podrías hacer planes para lograrlo.</p>
-                        <a href="https://www.churchofjesuschrist.org/study/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world?lang=spa" 
+                        <a href="https://www.churchofjesuschrist.org/study/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world?lang=spa"
                            target="_blank" class="proclamation-link">
                            Haz clic aquí para leer algo hermoso que nos ayudará en este camino.
                         </a>
@@ -398,7 +455,24 @@
                     </div>
                 </div>
             </div>
+
+            <div id="letter4" class="tab-pane">
+                <div class="letter-card">
+                    <h1>Flores sorpresa</h1>
+                    <div class="letter-content">
+                        <p>Querida princesa, el día de hoy quiero contarte lo especial que eres para mí.</p>
+                        <p>No he podido parar de pensar en lo brillante y maravillosa que eres, te admiro y jamás podrías olvidar que soy tu fan #1. Aún pienso en lo hermoso que fue ese primer "te amo", para mí ese día fue el más mágico que he visto. Te has encargado de hacerme feliz muchas veces y hoy quiero que sepas que soy solo tuyo y estoy feliz de serlo.</p>
+                        <p>Sabes que hace unos días te hablaba de algo que es súper importante para mí, y a pesar de que en algún momento podremos casarnos y sellarnos por las eternidades, jamás quiero dejar de ser tu novio, de cortejarte a diario, de esforzarme por enamorarte a diario. Siempre quiero recordarte lo perfecta que eres y lo feliz que me haces. No puedo por nada del mundo ahora verme sin ti, todo lo que pienso se trata de ti, y contigo estoy ansioso por poder verte ser la madre de mis hijos. Quiero llegar a casa y encontrarte ahí, poderte abrazar y compartir contigo. Quiero ya ser llamado como matrimonio, organizar algún evento, pero todo esto lo imagino y lo pienso solo cuando se trata de ti, mi princesa.</p>
+                        <p style="text-align: center; font-size: 1.1em; margin-top: 25px; margin-bottom: 25px;"><strong>Princesa hermosa, ¿podrías darme la oportunidad de ser tu novio, amarte y respetarte?</strong></p>
+                        <p>Te amo mucho mi princesa hermosa</p>
+                    </div>
+                    <div class="signature">
+                        <p>Att Pedro</p>
+                        <p class="att">P.D. Estas flores son para recordarte lo hermosa que eres y maravillosa mujer, para que siempre puedas sentirte como la princesa que eres. Recuerdo aún aquel día que te llamé princesa por primera vez, me sentí tan seguro de hacerlo que aún no puedo creer lo feliz que puedo llegar a ser si todo se trata de ti.</p>
+                    </div>
+                </div>
             </div>
+        </div>
 
         <div class="back-button-container">
             <a href="milugarseguro.html" class="back-button">Volver</a>
@@ -429,13 +503,12 @@
 
                     // Mostrar el panel correspondiente
                     const targetTab = button.dataset.tab;
-                    document.getElementById(targetTab).classList.add('active');
+                    const activePane = document.getElementById(targetTab);
+                    activePane.classList.add('active');
                 });
             });
 
             // --- Lógica de reproducción inicial y manejo del toggle ---
-
-            // Función para intentar reproducir el audio
             function tryPlayAudio() {
                 const playPromise = audio.play();
                 if (playPromise !== undefined) {
@@ -443,7 +516,6 @@
                         console.log('Música iniciada en cartas.html.');
                     }).catch(error => {
                         console.log('La reproducción automática fue bloqueada en cartas.html. El usuario deberá interactuar.', error);
-                        // Si se bloquea, desactiva el toggle visualmente y pausa el audio
                         audioToggle.checked = false;
                         audio.pause();
                     });
@@ -451,7 +523,6 @@
             }
 
             // Al cargar la página, intenta reproducir si el toggle está checked (por defecto)
-            // Es probable que el navegador bloquee el autoplay en esta nueva navegación.
             if (audioToggle.checked) {
                 tryPlayAudio();
             }
@@ -459,10 +530,8 @@
             // Manejar el clic en el toggle
             audioToggle.addEventListener('change', function() {
                 if (this.checked) {
-                    // Si el toggle se activa, intenta reproducir
                     tryPlayAudio();
                 } else {
-                    // Si el toggle se desactiva, pausa la música
                     audio.pause();
                 }
             });
@@ -470,7 +539,7 @@
             // Opcional: Si el audio se pausa por alguna razón externa (ej. otra pestaña),
             // asegura que el toggle se desactive.
             audio.addEventListener('pause', () => {
-                if (audioToggle.checked) { // Solo si el toggle estaba activo y se pausó externamente
+                if (audioToggle.checked) {
                     audioToggle.checked = false;
                 }
             });
@@ -478,11 +547,134 @@
             // Opcional: Si el audio se reproduce por alguna razón externa (ej. volvemos a la pestaña),
             // asegura que el toggle se active.
             audio.addEventListener('play', () => {
-                if (!audioToggle.checked) { // Solo si el toggle no estaba activo y se reprodujo externamente
+                if (!audioToggle.checked) {
                     audioToggle.checked = true;
                 }
             });
+
+            // Inicializar la primera pestaña como activa al cargar la página
+            document.querySelector('.tab-button.active').click();
         });
+
+        // --- SCRIPTS PARA LOS CORAZONES (BUBBLES) SIN SONIDO ---
+        (function() {
+            // Se elimina la variable ctx (AudioContext) y la función createSound
+
+            function getRandomColor() {
+                var colors = ["#456", "#890", "#634", "#299", "tomato", "#fb3"],
+                idx = Math.floor(colors.length * Math.random());
+                return (colors[idx]);
+            }
+
+            function animateIt(el, dur, delay) {
+                var animateEl = el.animate([
+                        {
+                            opacity: 0,
+                            transform: "translate(-50%, -50%) scale(0)" 
+                        },
+                        {
+                            opacity: 1,
+                            transform: "translate(-50%, -50%) scale(1)"
+                        },
+                        {
+                            opacity: 0,
+                            transform: "translate(-50%, -50%) scale(1.1)"
+                        }
+                    ], 
+                    {
+                        duration: dur,
+                        easing: "ease-out",
+                        fill: "forwards",
+                        delay: delay || 0
+                    });
+                return animateEl;
+            }
+            
+            function createBubble() {
+                var ns = "http://www.w3.org/2000/svg",
+                    bubble = document.createElement("div"),
+                    bubbleDummy = document.createElement("div"),
+                    heart = document.createElementNS(ns, "svg"),
+                    heartPath = document.createElementNS(ns, "path");
+                
+                heart.setAttribute("viewBox", "0 0 600 500");
+                // La ruta del corazón que proporcionaste
+                heartPath.setAttribute("d", "M300,150 C500,10 600,300 300,400 C0,300 100,10 300,150");
+                
+                bubble.classList.add("bubble");
+                bubble.style.color = getRandomColor(); // Para el borde de la burbuja
+                bubbleDummy.classList.add("bubble-dummy");
+                heart.classList.add("heart");
+                
+                heart.appendChild(heartPath);
+                bubble.appendChild(bubbleDummy);
+                bubble.appendChild(heart);
+                
+                document.body.appendChild(bubble); // Se añaden al body para que floten sobre todo
+                
+                return {
+                    setPosition: function(x, y) {
+                        // Se posiciona el centro de la burbuja en las coordenadas del clic/toque
+                        bubble.style.left = x + "px";
+                        bubble.style.top = y + "px";
+                    },
+                    _animate: function() {
+                        var animateBubble = animateIt(bubbleDummy, 1200),
+                            animateHeart = animateIt(heart, 2000); 
+                        
+                        return {
+                            bubbleDur: 1200,
+                            heartDur: 2000
+                        };
+                    },
+                    remove: function() {
+                        bubble.remove();
+                    }
+                };
+            }
+            
+            document.body.addEventListener("click", handleDown, false);
+            document.body.addEventListener("touchstart", handleDown, false);
+            
+            function handleDown(e) {
+                // Evita que el evento se propague y cause múltiples burbujas en el mismo lugar
+                e.stopPropagation(); 
+
+                var _x = e.pageX || (e.touches && e.touches[0].pageX),
+                    _y = e.pageY || (e.touches && e.touches[0].pageY); 
+                
+                var bubble = createBubble();
+                bubble.setPosition(_x, _y);
+                var animation = bubble._animate(),
+                    totalDelay = animation.bubbleDur + animation.heartDur;
+
+                // Se elimina la llamada a createSound()
+                
+                setTimeout(() => {
+                    bubble.remove();
+                }, totalDelay);
+            }
+            
+            // La llamada inicial a bubbleUp() sigue comentada para que los corazones
+            // solo aparezcan al hacer clic/tocar, no automáticamente al cargar la página.
+            // var w = document.body.clientWidth,
+            //     h = document.body.clientHeight;
+            // function bubbleUp() {
+            //     var de = {
+            //         pageX: Math.random() * w,
+            //         pageY: Math.random() * h
+            //     };
+            //     handleDown(de);
+            //     bblUp = setTimeout(bubbleUp, 200);
+            // }
+            // bubbleUp(); // <--- COMENTADA ESTA LÍNEA
+            
+            window.addEventListener("resize", function() {
+                // Las variables w y h ya no son necesarias si bubbleUp() está comentada.
+            }, false);
+
+            // Se elimina la lógica para reanudar AudioContext
+        })();
     </script>
 </body>
 </html>
