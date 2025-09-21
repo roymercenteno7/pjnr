@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Refugio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="background-container">
         <div class="audio-toggle-container">
@@ -20,16 +24,23 @@
             <div id="countdown-container">
                 <p id="countdown-text"></p>
             </div>
-            
-            <div class="image-card">
-                <img src="assets/imagen.png" alt="Familia">
+
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    </div>
+                <button class="carousel-button prev">&#10094;</button>
+                <button class="carousel-button next">&#10095;</button>
             </div>
+
             <div class="text-card-container">
                 <div class="tape-top"></div>
                 <div class="text-card">
                     <h2>Algo diferente</h2>
-                    <p>La intención de este espacio es que puedas saber que estoy aqui, a pesar que no puedes verme  ni tocarme, quiero que sepas que jamás me ire y bueno es un lugar de refugio y espero puedas recordarme siempre 
-</p> <p>Te quiero mucho mi princesa</p>
+                    <p>La intención de este espacio es que puedas saber que estoy aqui, a pesar que no puedes verme ni
+                        tocarme, quiero que sepas que jamás me ire y bueno es un lugar de refugio y espero puedas
+                        recordarme siempre
+                    </p>
+                    <p>Te quiero mucho mi princesa</p>
                 </div>
                 <div class="tape-bottom"></div>
             </div>
@@ -43,8 +54,10 @@
                 <div class="tape-top-paper"></div>
                 <div class="button-section">
                     <a href="musicas.html" class="button-link musicas">musicas</a>
-                    <a href="https://photos.app.goo.gl/WDdDcmciV9EtngBT8" class="button-link fotos" target="_blank">fotos</a>
-                    <a href="cartas.html" class="button-link cartas">cartas</a> </div>
+                    <a href="https://photos.app.goo.gl/WDdDcmciV9EtngBT8" class="button-link fotos"
+                        target="_blank">fotos</a>
+                    <a href="cartas.html" class="button-link cartas">cartas</a>
+                </div>
             </div>
         </div>
     </div>
@@ -59,37 +72,37 @@
             const audio = document.getElementById('background-music');
             const audioToggle = document.getElementById('audioToggle');
 
-            // --- Countdown Timer Logic ---
+            // --- Lógica del Contador ---
             const countdownText = document.getElementById('countdown-text');
 
             function updateCountdown() {
-                // Here you must declare the start date of your relationship.
-                // Format: 'YYYY-MM-DD'
-                const startDateStr = '2025-07-23'; 
+                // Aquí debes declarar la fecha de inicio de su relación.
+                // Formato: 'YYYY-MM-DD'
+                const startDateStr = '2025-07-23';
                 const startDate = new Date(startDateStr);
                 const today = new Date();
 
-                // Calculate the anniversary day for this month
+                // Calcula el día de aniversario para este mes
                 let nextAnniversary = new Date(today.getFullYear(), today.getMonth(), startDate.getDate());
 
-                // If the next anniversary is in the past, calculate the one for next month
+                // Si el próximo aniversario ya pasó, calcula el del próximo mes
                 if (nextAnniversary < today) {
                     nextAnniversary.setMonth(nextAnniversary.getMonth() + 1);
                 }
 
-                // Calculate the difference in time
+                // Calcula la diferencia en tiempo
                 const diffTime = nextAnniversary.getTime() - today.getTime();
-                // Convert the difference to days
+                // Convierte la diferencia a días
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
                 countdownText.textContent = `Faltan ${diffDays} días para cumplir meses de novios.`;
             }
 
-            // Update the counter immediately and then every day
+            // Actualiza el contador inmediatamente y luego cada día
             updateCountdown();
-            setInterval(updateCountdown, 1000 * 60 * 60 * 24); // Update every 24 hours
+            setInterval(updateCountdown, 1000 * 60 * 60 * 24); // Actualizar cada 24 horas
 
-            // --- Initial Audio and Toggle Logic ---
+            // --- Lógica de Audio y Botón ---
             function tryPlayAudio() {
                 const playPromise = audio.play();
                 if (playPromise !== undefined) {
@@ -107,7 +120,7 @@
                 tryPlayAudio();
             }
 
-            audioToggle.addEventListener('change', function() {
+            audioToggle.addEventListener('change', function () {
                 if (this.checked) {
                     tryPlayAudio();
                 } else {
@@ -126,7 +139,63 @@
                     audioToggle.checked = true;
                 }
             });
+
+            // --- Lógica del Carrusel (Dinámico) ---
+            const carouselSlide = document.querySelector('.carousel-slide');
+            const totalImages = 19; // El número total de fotos
+
+            // Genera y agrega las etiquetas de imagen al carrusel
+            for (let i = 1; i <= totalImages; i++) {
+                const img = document.createElement('img');
+                img.src = `assets/carousel/${i}.jpg`;
+                img.alt = `Momento especial ${i}`;
+                carouselSlide.appendChild(img);
+            }
+
+            const carouselImages = document.querySelectorAll('.carousel-slide img');
+            const carouselPrevButton = document.querySelector('.carousel-button.prev');
+            const carouselNextButton = document.querySelector('.carousel-button.next');
+
+            let carouselCounter = 0;
+
+            // Espera a que las imágenes se carguen para obtener su tamaño correcto
+            window.addEventListener('load', () => {
+                const carouselSize = carouselImages[0].clientWidth;
+
+                carouselNextButton.addEventListener('click', () => {
+                    if (carouselCounter >= carouselImages.length - 1) { // Si ya estamos en la última imagen
+                        carouselCounter = 0; // Vuelve a la primera imagen
+                        carouselSlide.style.transition = "none"; // Elimina la transición para el salto
+                        carouselSlide.style.transform = 'translateX(0px)';
+                        setTimeout(() => { // Vuelve a poner la transición después de un breve momento
+                            carouselSlide.style.transition = "transform 0.5s ease-in-out";
+                            carouselCounter++;
+                            carouselSlide.style.transform = 'translateX(' + (-carouselSize * carouselCounter) + 'px)';
+                        }, 50); // Un pequeño retraso para asegurar que la transición "none" se aplique
+                    } else {
+                        carouselSlide.style.transition = "transform 0.5s ease-in-out";
+                        carouselCounter++;
+                        carouselSlide.style.transform = 'translateX(' + (-carouselSize * carouselCounter) + 'px)';
+                    }
+                });
+
+                carouselPrevButton.addEventListener('click', () => {
+                    if (carouselCounter <= 0) { // Si ya estamos en la primera imagen
+                        carouselCounter = carouselImages.length - 1; // Salta a la última imagen
+                        carouselSlide.style.transition = "none"; // Elimina la transición para el salto
+                        carouselSlide.style.transform = 'translateX(' + (-carouselSize * carouselCounter) + 'px)';
+                        setTimeout(() => { // Vuelve a poner la transición
+                            carouselSlide.style.transition = "transform 0.5s ease-in-out";
+                        }, 50);
+                    } else {
+                        carouselSlide.style.transition = "transform 0.5s ease-in-out";
+                        carouselCounter--;
+                        carouselSlide.style.transform = 'translateX(' + (-carouselSize * carouselCounter) + 'px)';
+                    }
+                });
+            });
         });
     </script>
 </body>
+
 </html>
