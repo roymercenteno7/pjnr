@@ -298,3 +298,29 @@ body::after {
 /* body {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="%23A9A9A9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mouse-pointer"><path d="M3 3l7.07 7.07L12 21l2.93-2.93L21 12 3 3z"></path></svg>') 0 0, auto;
 } */
+
+/* Estilos para el contenedor de la cuenta regresiva */
+#countdown-container {
+    background-color: var(--color-yellow); /* Color de fondo igual a las cintas */
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 20px; /* Espacio entre el contador y la foto */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra para darle relieve */
+    display: inline-block; /* Para que el contenedor se ajuste al contenido */
+    position: relative;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    /* Estilo de "cinta rasgada" */
+    transform: rotate(-3deg);
+    border-top: 2px dashed #fff;
+    border-bottom: 2px dashed #fff;
+}
+
+/* Estilos para el texto de la cuenta regresiva */
+#countdown-text {
+    font-family: 'Dancing Script', cursive; /* Fuente del título "Algo diferente" */
+    font-size: 1.5em;
+    color: var(--color-primary-text); /* Color de texto principal */
+    margin: 0;
+    font-weight: 700;
+    white-space: nowrap; /* Evita que el texto se parta en varias líneas */
+}

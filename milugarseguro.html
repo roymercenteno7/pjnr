@@ -17,6 +17,10 @@
         </div>
 
         <div class="top-block">
+            <div id="countdown-container">
+                <p id="countdown-text"></p>
+            </div>
+            
             <div class="image-card">
                 <img src="assets/imagen.png" alt="Familia">
             </div>
@@ -55,9 +59,37 @@
             const audio = document.getElementById('background-music');
             const audioToggle = document.getElementById('audioToggle');
 
-            // --- Lógica de reproducción inicial y manejo del toggle ---
+            // --- Countdown Timer Logic ---
+            const countdownText = document.getElementById('countdown-text');
 
-            // Función para intentar reproducir el audio
+            function updateCountdown() {
+                // Here you must declare the start date of your relationship.
+                // Format: 'YYYY-MM-DD'
+                const startDateStr = '2025-07-23'; 
+                const startDate = new Date(startDateStr);
+                const today = new Date();
+
+                // Calculate the anniversary day for this month
+                let nextAnniversary = new Date(today.getFullYear(), today.getMonth(), startDate.getDate());
+
+                // If the next anniversary is in the past, calculate the one for next month
+                if (nextAnniversary < today) {
+                    nextAnniversary.setMonth(nextAnniversary.getMonth() + 1);
+                }
+
+                // Calculate the difference in time
+                const diffTime = nextAnniversary.getTime() - today.getTime();
+                // Convert the difference to days
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                countdownText.textContent = `Faltan ${diffDays} días para cumplir meses de novios.`;
+            }
+
+            // Update the counter immediately and then every day
+            updateCountdown();
+            setInterval(updateCountdown, 1000 * 60 * 60 * 24); // Update every 24 hours
+
+            // --- Initial Audio and Toggle Logic ---
             function tryPlayAudio() {
                 const playPromise = audio.play();
                 if (playPromise !== undefined) {
@@ -65,41 +97,32 @@
                         console.log('Música iniciada.');
                     }).catch(error => {
                         console.log('La reproducción automática fue bloqueada. El usuario deberá interactuar.', error);
-                        // Si se bloquea, desactiva el toggle visualmente y pausa el audio
                         audioToggle.checked = false;
                         audio.pause();
                     });
                 }
             }
 
-            // Al cargar la página, intenta reproducir si el toggle está checked (por defecto)
             if (audioToggle.checked) {
                 tryPlayAudio();
             }
 
-            // Manejar el clic en el toggle
             audioToggle.addEventListener('change', function() {
                 if (this.checked) {
-                    // Si el toggle se activa, intenta reproducir
                     tryPlayAudio();
                 } else {
-                    // Si el toggle se desactiva, pausa la música
                     audio.pause();
                 }
             });
 
-            // Opcional: Si el audio se pausa por alguna razón externa (ej. otra pestaña),
-            // asegura que el toggle se desactive.
             audio.addEventListener('pause', () => {
-                if (audioToggle.checked) { // Solo si el toggle estaba activo y se pausó externamente
+                if (audioToggle.checked) {
                     audioToggle.checked = false;
                 }
             });
 
-            // Opcional: Si el audio se reproduce por alguna razón externa (ej. volvemos a la pestaña),
-            // asegura que el toggle se active.
             audio.addEventListener('play', () => {
-                if (!audioToggle.checked) { // Solo si el toggle no estaba activo y se reprodujo externamente
+                if (!audioToggle.checked) {
                     audioToggle.checked = true;
                 }
             });

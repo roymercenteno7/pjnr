@@ -1,61 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartas para Angélica</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <style>
         /* Variables de Color (puedes mantenerlas en style.css o aquí si prefieres) */
         :root {
-            --color-light-blue: #CDEBF9; /* Azul claro */
-            --color-light-purple: #E0CFF9; /* Morado claro */
-            --color-light-pink: #F9CDEB; /* Rosa claro */
-            --color-primary-text: #4A4A68; /* Texto principal oscuro azulado */
-            --color-dark-text: #333; /* Texto general más oscuro */
-            --color-link-blue: #6A7DD8; /* Azul para enlaces */
-            --color-link-purple: #B28ED7; /* Morado para enlaces/botones */
-            --color-pink: #F79CDA; /* Rosa vibrante */
-            --color-yellow: #F7D470; /* Amarillo para detalles */
+            --color-light-blue: #CDEBF9;
+            /* Azul claro */
+            --color-light-purple: #E0CFF9;
+            /* Morado claro */
+            --color-light-pink: #F9CDEB;
+            /* Rosa claro */
+            --color-primary-text: #4A4A68;
+            /* Texto principal oscuro azulado */
+            --color-dark-text: #333;
+            /* Texto general más oscuro */
+            --color-link-blue: #6A7DD8;
+            /* Azul para enlaces */
+            --color-link-purple: #B28ED7;
+            /* Morado para enlaces/botones */
+            --color-pink: #F79CDA;
+            /* Rosa vibrante */
+            --color-yellow: #F7D470;
+            /* Amarillo para detalles */
         }
 
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: #f0f0f0; /* Color de fondo suave */
+            background-color: #f0f0f0;
+            /* Color de fondo suave */
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Alinea al inicio verticalmente */
+            align-items: flex-start;
+            /* Alinea al inicio verticalmente */
             min-height: 100vh;
-            padding: 20px 0; /* Espacio superior e inferior para el contenido */
+            padding: 20px 0;
+            /* Espacio superior e inferior para el contenido */
             box-sizing: border-box;
             /* Asegúrate de que el body no tenga un overflow:hidden aquí,
                ya que podría impedir que las burbujas salgan de la vista */
-            overflow: auto; /* o 'visible' si prefieres */
+            overflow: auto;
+            /* o 'visible' si prefieres */
         }
 
         /* Contenedor principal de la tarjeta/fondo */
         .card-container {
-            width: 100%; /* Ocupa el 100% del ancho disponible */
+            width: 100%;
+            /* Ocupa el 100% del ancho disponible */
             max-width: 450px;
             background: linear-gradient(to bottom,
-                var(--color-light-blue) 0%, var(--color-light-blue) 30%,
-                var(--color-light-purple) 30%, var(--color-light-purple) 65%,
-                var(--color-light-pink) 65%, var(--color-light-pink) 100%
-            );
+                    var(--color-light-blue) 0%, var(--color-light-blue) 30%,
+                    var(--color-light-purple) 30%, var(--color-light-purple) 65%,
+                    var(--color-light-pink) 65%, var(--color-light-pink) 100%);
             position: relative;
             padding-bottom: 20px;
-            overflow: hidden; /* Asegura que el gradiente se vea bien */
+            overflow: hidden;
+            /* Asegura que el gradiente se vea bien */
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-radius: 20px; /* Bordes redondeados para el contenedor principal */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            /* Bordes redondeados para el contenedor principal */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             /* Añadir un padding horizontal para asegurar que no se pegue a los bordes de la pantalla */
             padding-left: 10px;
             padding-right: 10px;
-            box-sizing: border-box; /* Incluye padding en el width */
+            box-sizing: border-box;
+            /* Incluye padding en el width */
         }
 
         /* Estilos del botón de audio (se mantienen como están, son buenos) */
@@ -93,15 +112,17 @@
             transform: translate(-50%, -50%);
             width: 20px;
             height: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234A4A68"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.81 5 3.54 5 6.71s-2.11 5.9-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>'); /* Icono de sonido */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234A4A68"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.81 5 3.54 5 6.71s-2.11 5.9-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>');
+            /* Icono de sonido */
             background-size: contain;
             background-repeat: no-repeat;
             opacity: 1;
             transition: opacity 0.3s ease;
         }
 
-        .audio-toggle-checkbox:checked + .audio-toggle-label .audio-toggle-icon {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234A4A68"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .9-.2 1.75-.54 2.54l1.49 1.49C20.36 14.65 21 13.33 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.81 5 3.54 5 6.71s-2.11 5.9-5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.28 4.28c-.9.69-1.93 1.25-3.04 1.69l1.26 1.26c1.67-.45 3.19-1.46 4.5-2.73L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>'); /* Icono de silencio */
+        .audio-toggle-checkbox:checked+.audio-toggle-label .audio-toggle-icon {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234A4A68"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .9-.2 1.75-.54 2.54l1.49 1.49C20.36 14.65 21 13.33 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.81 5 3.54 5 6.71s-2.11 5.9-5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.28 4.28c-.9.69-1.93 1.25-3.04 1.69l1.26 1.26c1.67-.45 3.19-1.46 4.5-2.73L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>');
+            /* Icono de silencio */
         }
 
         /* --- Estilos para las Pestañas (ajustados para móvil) --- */
@@ -110,13 +131,19 @@
             justify-content: center;
             margin-top: 30px;
             margin-bottom: 20px;
-            width: 100%; /* Ocupa todo el ancho del card-container */
-            max-width: 380px; /* Mantiene el ancho máximo */
+            width: 100%;
+            /* Ocupa todo el ancho del card-container */
+            max-width: 380px;
+            /* Mantiene el ancho máximo */
             z-index: 3;
-            flex-wrap: wrap; /* Permite que los botones se envuelvan */
-            gap: 8px; /* Espacio entre los botones */
-            box-sizing: border-box; /* Incluye padding en el width */
-            padding: 0 15px; /* Padding para que los botones no se peguen a los bordes */
+            flex-wrap: wrap;
+            /* Permite que los botones se envuelvan */
+            gap: 8px;
+            /* Espacio entre los botones */
+            box-sizing: border-box;
+            /* Incluye padding en el width */
+            padding: 0 15px;
+            /* Padding para que los botones no se peguen a los bordes */
         }
 
         .tab-button {
@@ -130,9 +157,10 @@
             font-size: 0.85em;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.1s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             white-space: nowrap;
-            flex-shrink: 0; /* Evita que los botones se encojan más de lo necesario */
+            flex-shrink: 0;
+            /* Evita que los botones se encojan más de lo necesario */
         }
 
         .tab-button:hover {
@@ -141,10 +169,11 @@
 
         .tab-button.active {
             background-color: var(--color-link-blue);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transform: translateY(-2px);
             z-index: 4;
         }
+
         /* Fin Estilos para las Pestañas */
 
 
@@ -152,18 +181,23 @@
             background-color: #fff;
             border-radius: 15px;
             padding: 25px;
-            margin: 0 0 20px 0; /* Eliminamos márgenes laterales aquí para que el padding del card-container los maneje */
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-            max-width: 380px; /* Ancho máximo para la carta */
-            width: 100%; /* Ocupa el 100% del ancho disponible de su padre (que ya tiene padding) */
+            margin: 0 0 20px 0;
+            /* Eliminamos márgenes laterales aquí para que el padding del card-container los maneje */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            max-width: 380px;
+            /* Ancho máximo para la carta */
+            width: 100%;
+            /* Ocupa el 100% del ancho disponible de su padre (que ya tiene padding) */
             position: relative;
             z-index: 2;
             text-align: left;
             line-height: 1.6;
-            box-sizing: border-box; /* Asegura que el padding se incluya en el cálculo del width */
+            box-sizing: border-box;
+            /* Asegura que el padding se incluya en el cálculo del width */
         }
 
-        .letter-card::before { /* Cinta decorativa superior */
+        .letter-card::before {
+            /* Cinta decorativa superior */
             content: '';
             position: absolute;
             top: -15px;
@@ -173,11 +207,12 @@
             height: 22px;
             background-color: var(--color-link-pink);
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 3;
         }
 
-        .letter-card::after { /* Cinta decorativa inferior */
+        .letter-card::after {
+            /* Cinta decorativa inferior */
             content: '';
             position: absolute;
             bottom: -15px;
@@ -187,7 +222,7 @@
             height: 22px;
             background-color: var(--color-yellow);
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 3;
         }
 
@@ -198,7 +233,8 @@
             text-align: center;
             margin-bottom: 20px;
             font-weight: 700;
-            word-wrap: break-word; /* Asegura que títulos largos se rompan si es necesario */
+            word-wrap: break-word;
+            /* Asegura que títulos largos se rompan si es necesario */
         }
 
         .letter-content {
@@ -211,7 +247,8 @@
         .letter-content p {
             margin-bottom: 1em;
             text-indent: 1.2em;
-            word-wrap: break-word; /* Asegura que palabras largas se rompan */
+            word-wrap: break-word;
+            /* Asegura que palabras largas se rompan */
         }
 
         /* Estilos para el enlace de la proclamación */
@@ -236,9 +273,11 @@
             display: block;
             text-align: center;
             margin: 15px 0;
-            font-size: 1em; /* Un poco más grande para destacarlo */
+            font-size: 1em;
+            /* Un poco más grande para destacarlo */
             font-weight: 600;
-            color: var(--color-pink); /* Un color que resalte */
+            color: var(--color-pink);
+            /* Un color que resalte */
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -281,7 +320,7 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             transition: background-color 0.3s ease, transform 0.1s ease;
             font-size: 0.9em;
         }
@@ -289,9 +328,10 @@
         .back-button:hover {
             background-color: #9d6baa;
         }
+
         .back-button:active {
             transform: translateY(2px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         /* Estilos para ocultar/mostrar paneles de pestañas */
@@ -304,27 +344,39 @@
         }
 
         /* MEDIA QUERIES para ajustes más específicos en móviles muy pequeños */
-        @media (max-width: 360px) { /* Por ejemplo, para iPhones 5/SE o dispositivos muy estrechos */
+        @media (max-width: 360px) {
+
+            /* Por ejemplo, para iPhones 5/SE o dispositivos muy estrechos */
             .card-container {
                 padding-left: 5px;
                 padding-right: 5px;
             }
+
             .tab-buttons {
-                padding: 0 5px; /* Reducir aún más el padding de los botones */
-                gap: 5px; /* Reducir el espacio entre botones */
+                padding: 0 5px;
+                /* Reducir aún más el padding de los botones */
+                gap: 5px;
+                /* Reducir el espacio entre botones */
             }
+
             .tab-button {
                 font-size: 0.8em;
                 padding: 8px 10px;
             }
+
             .letter-card {
-                padding: 20px; /* Reducir el padding interno de la carta */
+                padding: 20px;
+                /* Reducir el padding interno de la carta */
             }
+
             .letter-card h1 {
-                font-size: 1.8em; /* Títulos un poco más pequeños */
+                font-size: 1.8em;
+                /* Títulos un poco más pequeños */
             }
+
             .letter-content {
-                font-size: 0.9em; /* Mantener la legibilidad */
+                font-size: 0.9em;
+                /* Mantener la legibilidad */
             }
         }
 
@@ -337,10 +389,14 @@
             min-height: 70px;
             max-width: 150px;
             max-height: 150px;
-            color: #3a8de0; /* Color del borde de la burbuja/corazón */
-            border-radius: 50%; /* Esto es para la burbuja exterior */
-            pointer-events: none; /* Crucial para que no bloquee clics en el contenido subyacente */
-            z-index: 999; /* Asegura que estén por encima de todo */
+            color: #3a8de0;
+            /* Color del borde de la burbuja/corazón */
+            border-radius: 50%;
+            /* Esto es para la burbuja exterior */
+            pointer-events: none;
+            /* Crucial para que no bloquee clics en el contenido subyacente */
+            z-index: 999;
+            /* Asegura que estén por encima de todo */
         }
 
         .bubble-dummy {
@@ -360,10 +416,12 @@
                 opacity: 0;
                 transform: scale(0);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1);
             }
+
             100% {
                 opacity: 0;
                 transform: scale(1.1);
@@ -377,11 +435,13 @@
         }
 
         .heart path {
-            fill: #e27373; /* Color del corazón SVG */
+            fill: #e27373;
+            /* Color del corazón SVG */
             stroke: none;
         }
     </style>
 </head>
+
 <body>
     <div class="background-container card-container">
         <div class="audio-toggle-container">
@@ -396,6 +456,8 @@
             <button class="tab-button" data-tab="letter2">Carta 2</button>
             <button class="tab-button" data-tab="letter3">Caja de Sorpresas</button>
             <button class="tab-button" data-tab="letter4">Flores sorpresa</button>
+            <button class="tab-button" data-tab="letter5">Carta 3</button>
+            <button class="tab-button" data-tab="letter6">Carta 4</button>
         </div>
 
         <div class="tab-content">
@@ -404,16 +466,28 @@
                     <h1>Carta para mi Princesa</h1>
                     <div class="letter-content">
                         <p>Mi querida princesa,</p>
-                        <p>Mientras escribo esto, no puedo evitar sonreír al pensar en el futuro que nos espera. Cada día que pasa me acerco más a ese momento soñado, la emoción que siento es indescriptible.</p>
-                        <p>Desde el momento en que te conocí, supe que había algo increíblemente especial en ti. Tu risa contagiosa, la luz en tus ojos cuando te apasiona algo, tu amabilidad inagotable y la fuerza silenciosa que posees, todo en ti me cautivó. Eres mi refugio, mi mayor alegría y la persona que me inspira a ser la mejor versión de mí mismo.</p>
-                        <p>Sé que la vida nos presentará desafíos, pero no hay nadie más con quien prefiera enfrentarlos que contigo. Contigo a mi lado, cada obstáculo parece menos desalentador y cada victoria se siente más dulce. No puedo esperar para construir una vida juntos, llena de risas, aventuras, comprensión mutua y un amor que crezca más profundo con cada año que pase.</p>
-                        <p>Prometo quererte incondicionalmente, apoyarte en tus sueños, escucharte con el corazón abierto y ser tu compañero más fiel. Prometo que siempre haré lo mejor que pueda para hacerte sentir amada, valorada y feliz.</p>
-                        <p>Angélica, te haz vuelto muy especial en mi vida, no puedo negarte que estoy contando los días para volver y poder compartir mucho mas contigo.</p>
+                        <p>Mientras escribo esto, no puedo evitar sonreír al pensar en el futuro que nos espera. Cada
+                            día que pasa me acerco más a ese momento soñado, la emoción que siento es indescriptible.
+                        </p>
+                        <p>Desde el momento en que te conocí, supe que había algo increíblemente especial en ti. Tu risa
+                            contagiosa, la luz en tus ojos cuando te apasiona algo, tu amabilidad inagotable y la fuerza
+                            silenciosa que posees, todo en ti me cautivó. Eres mi refugio, mi mayor alegría y la persona
+                            que me inspira a ser la mejor versión de mí mismo.</p>
+                        <p>Sé que la vida nos presentará desafíos, pero no hay nadie más con quien prefiera enfrentarlos
+                            que contigo. Contigo a mi lado, cada obstáculo parece menos desalentador y cada victoria se
+                            siente más dulce. No puedo esperar para construir una vida juntos, llena de risas,
+                            aventuras, comprensión mutua y un amor que crezca más profundo con cada año que pase.</p>
+                        <p>Prometo quererte incondicionalmente, apoyarte en tus sueños, escucharte con el corazón
+                            abierto y ser tu compañero más fiel. Prometo que siempre haré lo mejor que pueda para
+                            hacerte sentir amada, valorada y feliz.</p>
+                        <p>Angélica, te haz vuelto muy especial en mi vida, no puedo negarte que estoy contando los días
+                            para volver y poder compartir mucho mas contigo.</p>
 
-                        <p>Esto ahora mismo es un sueño, pero podríamos convertirlo en una meta. Y sí, podrías hacer planes para lograrlo.</p>
+                        <p>Esto ahora mismo es un sueño, pero podríamos convertirlo en una meta. Y sí, podrías hacer
+                            planes para lograrlo.</p>
                         <a href="https://www.churchofjesuschrist.org/study/scriptures/the-family-a-proclamation-to-the-world/the-family-a-proclamation-to-the-world?lang=spa"
-                           target="_blank" class="proclamation-link">
-                           Haz clic aquí para leer algo hermoso que nos ayudará en este camino.
+                            target="_blank" class="proclamation-link">
+                            Haz clic aquí para leer algo hermoso que nos ayudará en este camino.
                         </a>
                     </div>
                     <div class="signature">
@@ -429,9 +503,14 @@
                     <h1>Momentos a tu lado</h1>
                     <div class="letter-content">
                         <p>Mi dulce Angélica,</p>
-                        <p>Desde que te conocí, mi mundo se llenó de un color que no sabía que existía. Cada momento a tu lado es un tesoro, una nueva aventura que atesoro en mi corazón. Tu presencia ilumina mis días y me da la fuerza para enfrentar cualquier cosa.</p>
-                        <p>Estoy emocionado por los caminos que aún nos quedan por explorar juntos, por las risas que compartiremos y los sueños que construiremos. Contigo, el futuro se ve brillante y lleno de posibilidades infinitas.</p>
-                        <p>Gracias por ser tú, por tu amor, tu comprensión y tu infinita paciencia. Eres el mejor regalo que la vida me ha dado.</p>
+                        <p>Desde que te conocí, mi mundo se llenó de un color que no sabía que existía. Cada momento a
+                            tu lado es un tesoro, una nueva aventura que atesoro en mi corazón. Tu presencia ilumina mis
+                            días y me da la fuerza para enfrentar cualquier cosa.</p>
+                        <p>Estoy emocionado por los caminos que aún nos quedan por explorar juntos, por las risas que
+                            compartiremos y los sueños que construiremos. Contigo, el futuro se ve brillante y lleno de
+                            posibilidades infinitas.</p>
+                        <p>Gracias por ser tú, por tu amor, tu comprensión y tu infinita paciencia. Eres el mejor regalo
+                            que la vida me ha dado.</p>
                     </div>
                     <div class="signature">
                         <p>Siempre tuyo,</p>
@@ -445,24 +524,54 @@
                 <div class="letter-card">
                     <h1>Un Día Especial para Nosotros</h1>
                     <div class="letter-content">
-                        <p>Quiero escribirte esto hoy porque será un día especial. Hoy haré algo que jamás en la vida había hecho: seguir escribiendo cartas y expresar mi amor por ti por este medio. Es algo bonito y me siento bien, así que, bueno, ¡comencemos contándote un poco sobre esta caja!</p>
+                        <p>Quiero escribirte esto hoy porque será un día especial. Hoy haré algo que jamás en la vida
+                            había hecho: seguir escribiendo cartas y expresar mi amor por ti por este medio. Es algo
+                            bonito y me siento bien, así que, bueno, ¡comencemos contándote un poco sobre esta caja!</p>
                         <p>Dentro de ella hay muchas cosas para disfrutar de distintas maneras, así que ahí voy:</p>
-                        <p>Este **<strong>llavero</strong>** espero que siempre pueda ir contigo y puedas recordar siempre que ahí estaré, una y otra vez, escogiéndote, y bueno, eso es algo maravilloso. El QR es funcional y puedes escanearlo para entrar a tu **<strong>lugar seguro</strong>** que frecuentemente se estará actualizando.</p>
-                        <p>Hay algo de **<strong>dulces</strong>** para que puedas disfrutar de algo rico mientras lees todas estas cosas.</p>
-                        <p>Tienes estas **<strong>Escrituras</strong>** que son para ti, y espero que puedas leerlas y disfrutar de ellas. Refúgiate en ellas cuando me extrañes, solo léelas, entra en ellas, cuídalas como nunca, son solo tuyas (obvio, viene con el kit completo, jajajaja, tienes las cintas para marcar tus Escrituras favoritas y los resaltadores de Escrituras). Cuídalas que luego las tendremos en nuestra casa y serán para nosotros.</p>
-                        <p>Dejaré aquí en esta caja también unos **<strong>collares</strong>** que son para que siempre puedas recordarme, pero más que eso, para que también puedas recordar las cosas maravillosas que has hecho y las que estamos por hacer. Esos grandes convenios que haremos en el Templo son maravillosos.</p>
-                        <p>Dejaré un **<strong>aceitero con aceite consagrado</strong>** para ti, y espero puedas guardarlo y recordar que ahora ya tendrás en tu hogar un caballero digno poseedor del sacerdocio ordenado en oficio de élder. Y recuerda que esta lleno de aceite de oliva, que es la sustancia más pura que tenemos en la tierra.</p>
-                        <p>Una **<strong>lámpara</strong>** que debes llevar siempre a donde duermas y dormir con ella al lado de ti para que puedas recordar ese sueño que tenemos que cumplir y por el que nos esforzaremos.</p>
+                        <p>Este **<strong>llavero</strong>** espero que siempre pueda ir contigo y puedas recordar
+                            siempre que ahí estaré, una y otra vez, escogiéndote, y bueno, eso es algo maravilloso. El
+                            QR es funcional y puedes escanearlo para entrar a tu **<strong>lugar seguro</strong>** que
+                            frecuentemente se estará actualizando.</p>
+                        <p>Hay algo de **<strong>dulces</strong>** para que puedas disfrutar de algo rico mientras lees
+                            todas estas cosas.</p>
+                        <p>Tienes estas **<strong>Escrituras</strong>** que son para ti, y espero que puedas leerlas y
+                            disfrutar de ellas. Refúgiate en ellas cuando me extrañes, solo léelas, entra en ellas,
+                            cuídalas como nunca, son solo tuyas (obvio, viene con el kit completo, jajajaja, tienes las
+                            cintas para marcar tus Escrituras favoritas y los resaltadores de Escrituras). Cuídalas que
+                            luego las tendremos en nuestra casa y serán para nosotros.</p>
+                        <p>Dejaré aquí en esta caja también unos **<strong>collares</strong>** que son para que siempre
+                            puedas recordarme, pero más que eso, para que también puedas recordar las cosas maravillosas
+                            que has hecho y las que estamos por hacer. Esos grandes convenios que haremos en el Templo
+                            son maravillosos.</p>
+                        <p>Dejaré un **<strong>aceitero con aceite consagrado</strong>** para ti, y espero puedas
+                            guardarlo y recordar que ahora ya tendrás en tu hogar un caballero digno poseedor del
+                            sacerdocio ordenado en oficio de élder. Y recuerda que esta lleno de aceite de oliva, que es
+                            la sustancia más pura que tenemos en la tierra.</p>
+                        <p>Una **<strong>lámpara</strong>** que debes llevar siempre a donde duermas y dormir con ella
+                            al lado de ti para que puedas recordar ese sueño que tenemos que cumplir y por el que nos
+                            esforzaremos.</p>
                         <p>Ahora viene lo mas importante de todo esto:</p>
-                        <p>Adentro hay unas **<strong>placas misionales</strong>**, y todas te pertenecen. Hablemos un poco de ellas:</p>
+                        <p>Adentro hay unas **<strong>placas misionales</strong>**, y todas te pertenecen. Hablemos un
+                            poco de ellas:</p>
                         <ul>
-                            <li>La **<strong>placa negra con tu nombre</strong>** es algo simbólico porque has cumplido con tu objetivo como misionera, y realmente, a pesar de que no fuiste a una misión, quiero que sepas que eres y serás siempre una misionera. Luego verás el porqué.</li>
-                            <li>La **<strong>placa dorada con tu nombre</strong>** es porque eres la mejor y única misionera, y no podría dejar de pensar en lo maravilloso que serán todos esos hijos que tendremos al verlos partir al campo misional.</li>
-                            <li>Y bueno, **<strong>mis placas</strong>**, para que recuerdes que es algo que haremos juntos y siempre me lleves contigo a donde puedas ir.</li>
+                            <li>La **<strong>placa negra con tu nombre</strong>** es algo simbólico porque has cumplido
+                                con tu objetivo como misionera, y realmente, a pesar de que no fuiste a una misión,
+                                quiero que sepas que eres y serás siempre una misionera. Luego verás el porqué.</li>
+                            <li>La **<strong>placa dorada con tu nombre</strong>** es porque eres la mejor y única
+                                misionera, y no podría dejar de pensar en lo maravilloso que serán todos esos hijos que
+                                tendremos al verlos partir al campo misional.</li>
+                            <li>Y bueno, **<strong>mis placas</strong>**, para que recuerdes que es algo que haremos
+                                juntos y siempre me lleves contigo a donde puedas ir.</li>
                         </ul>
-                        <p>Hay un **<strong>forro para tu teléfono</strong>** donde me podrás llevar siempre, porque también hay unas fotos y ahí me recordarás siempre. Atrás de las fotos está el día que nos conocimos y mi huella para que puedas recordarme siempre.</p>
-                        <p>Estaré llenando cada vez que pueda la **<strong>cartuchera del primer regalo</strong>** con cositas de esas para que siempre puedas hacer tus rutinas de skincare y esas cosas lindas que haces.</p>
-                        <p>Y bueno, ahora, ¡quedarás algo sorprendida cuando veas mi **<strong>Bendición Patriarcal</strong>**! Es ahí donde me entrego a ti. Estúdiala y léela mucho, busca las cosas que tenemos en común, disfruta de esto y mucho más.</p>
+                        <p>Hay un **<strong>forro para tu teléfono</strong>** donde me podrás llevar siempre, porque
+                            también hay unas fotos y ahí me recordarás siempre. Atrás de las fotos está el día que nos
+                            conocimos y mi huella para que puedas recordarme siempre.</p>
+                        <p>Estaré llenando cada vez que pueda la **<strong>cartuchera del primer regalo</strong>** con
+                            cositas de esas para que siempre puedas hacer tus rutinas de skincare y esas cosas lindas
+                            que haces.</p>
+                        <p>Y bueno, ahora, ¡quedarás algo sorprendida cuando veas mi **<strong>Bendición
+                                Patriarcal</strong>**! Es ahí donde me entrego a ti. Estúdiala y léela mucho, busca las
+                            cosas que tenemos en común, disfruta de esto y mucho más.</p>
                         <p>¡Te quiero mucho mi princesa hermosa! ¡Jamás me olvides por nada del mundo!</p>
                     </div>
                     <div class="signature">
@@ -478,17 +587,106 @@
                     <h1>Flores sorpresa</h1>
                     <div class="letter-content">
                         <p>Querida princesa, el día de hoy quiero contarte lo especial que eres para mí.</p>
-                        <p>No he podido parar de pensar en lo brillante y maravillosa que eres, te admiro y jamás podrías olvidar que soy tu fan #1. Aún pienso en lo hermoso que fue ese primer "te amo", para mí ese día fue el más mágico que he visto. Te has encargado de hacerme feliz muchas veces y hoy quiero que sepas que soy solo tuyo y estoy feliz de serlo.</p>
-                        <p>Sabes que hace unos días te hablaba de algo que es súper importante para mí, y a pesar de que en algún momento podremos casarnos y sellarnos por las eternidades, jamás quiero dejar de ser tu novio, de cortejarte a diario, de esforzarme por enamorarte a diario. Siempre quiero recordarte lo perfecta que eres y lo feliz que me haces. No puedo por nada del mundo ahora verme sin ti, todo lo que pienso se trata de ti, y contigo estoy ansioso por poder verte ser la madre de mis hijos. Quiero llegar a casa y encontrarte ahí, poderte abrazar y compartir contigo. Quiero ya ser llamado como matrimonio, organizar algún evento, pero todo esto lo imagino y lo pienso solo cuando se trata de ti, mi princesa.</p>
-                        <p style="text-align: center; font-size: 1.1em; margin-top: 25px; margin-bottom: 25px;"><strong>Princesa hermosa, ¿podrías darme la oportunidad de ser tu novio, amarte y respetarte?</strong></p>
+                        <p>No he podido parar de pensar en lo brillante y maravillosa que eres, te admiro y jamás
+                            podrías olvidar que soy tu fan #1. Aún pienso en lo hermoso que fue ese primer "te amo",
+                            para mí ese día fue el más mágico que he visto. Te has encargado de hacerme feliz muchas
+                            veces y hoy quiero que sepas que soy solo tuyo y estoy feliz de serlo.</p>
+                        <p>Sabes que hace unos días te hablaba de algo que es súper importante para mí, y a pesar de que
+                            en algún momento podremos casarnos y sellarnos por las eternidades, jamás quiero dejar de
+                            ser tu novio, de cortejarte a diario, de esforzarme por enamorarte a diario. Siempre quiero
+                            recordarte lo perfecta que eres y lo feliz que me haces. No puedo por nada del mundo ahora
+                            verme sin ti, todo lo que pienso se trata de ti, y contigo estoy ansioso por poder verte ser
+                            la madre de mis hijos. Quiero llegar a casa y encontrarte ahí, poderte abrazar y compartir
+                            contigo. Quiero ya ser llamado como matrimonio, organizar algún evento, pero todo esto lo
+                            imagino y lo pienso solo cuando se trata de ti, mi princesa.</p>
+                        <p style="text-align: center; font-size: 1.1em; margin-top: 25px; margin-bottom: 25px;">
+                            <strong>Princesa hermosa, ¿podrías darme la oportunidad de ser tu novio, amarte y
+                                respetarte?</strong>
+                        </p>
                         <p>Te amo mucho mi princesa hermosa</p>
-                        <a href="https://www.youtube.com/watch?v=cSgD9vKJZNw&list=RDcSgD9vKJZNw&start_radio=1" target="_blank" class="song-link">
+                        <a href="https://www.youtube.com/watch?v=cSgD9vKJZNw&list=RDcSgD9vKJZNw&start_radio=1"
+                            target="_blank" class="song-link">
                             Te regalo una canción hermosa princesa
                         </a>
                     </div>
                     <div class="signature">
                         <p>Att Pedro</p>
-                        <p class="att">P.D. Estas flores son para recordarte lo hermosa que eres y maravillosa mujer, para que siempre puedas sentirte como la princesa que eres. Recuerdo aún aquel día que te llamé princesa por primera vez, me sentí tan seguro de hacerlo que aún no puedo creer lo feliz que puedo llegar a ser si todo se trata de ti.</p>
+                        <p class="att">P.D. Estas flores son para recordarte lo hermosa que eres y maravillosa mujer,
+                            para que siempre puedas sentirte como la princesa que eres. Recuerdo aún aquel día que te
+                            llamé princesa por primera vez, me sentí tan seguro de hacerlo que aún no puedo creer lo
+                            feliz que puedo llegar a ser si todo se trata de ti.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="letter5" class="tab-pane">
+                <div class="letter-card">
+                    <h1>Mi Camisa y Sorpresas</h1>
+                    <div class="letter-content">
+                        <p>Querida hermosa princesa, el día de hoy deseo hacerte esta carta para recordarte nuevamente
+                            lo mucho que te amo y disfruto de ti. Ahora no puedo parar de pensar en ti y mucho menos
+                            puedo dejar de imaginar un futuro hermoso a tu lado. Puedo cerrar los ojos y verte ahí, al
+                            frente de mí, cumpliendo cada una de nuestras metas juntos. No paro de pensar en ese momento
+                            en que nos toque esperar un bebé y, cuando esté en tu pancita, cantarle muchas canciones y
+                            llenarte de mucho. Realmente para mí eres una mujer grandiosa y te admiro mucho. Ver que
+                            serás la madre de mis hijos me llena de satisfacción. Te amo mucho, mi princesa.</p>
+
+                        <p>Ahora bien, hablemos de estas cosas que andan por aquí:</p>
+                        <ul>
+                            <li>Un **<strong>bolso</strong>** especial y lindo para ir al Templo y verte elegante, y
+                                para que lo puedas usar cuando quieras.</li>
+                            <li>Otro **<strong>llavero</strong>**, jajajaja, porque el primero falló y bueno, es
+                                interesante que ahora tengo uno conmigo.</li>
+                            <li>Hay **<strong>garments</strong>** para que puedas cambiar algunos viejos, pero más que
+                                eso, ¿recuerdas que te conté de estos especiales? Bueno...</li>
+                            <li>Un **<strong>chocolate</strong>** de tu favorito, jejeje.</li>
+                            <li>Y bueno, ahora viene algo especial: es una **<strong>camisa mía</strong>** para que
+                                puedas dormir con ella y recordarme mucho. Que puedas ponértela y pensarme mucho y saber
+                                que estoy ahí a tu lado.</li>
+                        </ul>
+                    </div>
+                    <div class="signature">
+                        <p>Con todo mi amor,</p>
+                        <p>te quiero mucho</p>
+                        <p class="att">Att Pedro</p>
+                    </div>
+                </div>
+            </div>
+            <div id="letter6" class="tab-pane">
+                <div class="letter-card">
+                    <h1>Un Propósito en la Distancia</h1>
+                    <div class="letter-content">
+                        <p>Ahora mismo ando un poco lejos y han sido días difíciles. Esperando entender el propósito de
+                            este break pude valorar la importancia de la familia y los buenos amigos.</p>
+                        <p>Quiero contarte un poco cómo me siento y todo lo que he pensado estando aquí.</p>
+                        <p>Desde el día uno que me fui sentí que perdía algo. Quizás podría describirlo como un
+                            desgarro, y bueno, no puedo negar que en serio dolió mucho, pero lo había aceptado al tomar
+                            la decisión de volver aquí. Pues vi cómo todo cambió por completo porque ya no te vería.
+                            Sabía que no podría estar en las tardes esperándote o que no podría cenar más contigo, pero
+                            a la vez, ansioso porque llegaría pronto el momento de jamás separarme de ti. Al entrar por
+                            primera vez de vuelta a casa solo comencé a contar los días para volver a verte, y ajá, esto
+                            ha sido un infierno. Sobrelevar los desafíos que hemos vivido no es fácil la verdad, pero
+                            algo me deja tranquilo y es el final del día cuando hablo contigo. Solo siento esa paz y esa
+                            calma que me recargan de energía para el próximo día.</p>
+                        <p>Hoy no puedo negarte que me siento débil y que en realidad tengo mucho miedo. Hemos tomado
+                            esta decisión que cambiará nuestras vidas por completo y solo espero que sea para bien. He
+                            visto alguna oposición de tu familia y quisiera entender el porqué, pero nada que hacer,
+                            realmente solo seguiremos adelante para mantenernos fuertes.</p>
+                        <p>Hay algo que sí me gustaría recordarte y es que esto no tendrá vuelta atrás y yo estoy seguro
+                            de lo que hacemos y lo especial que eres para mí. Yo sé que realmente vales mucho y al
+                            cerrar mis ojos y pensarte puedo proyectar un futuro libremente contigo porque es algo
+                            mágico lo que vivo. No serán días fáciles el modificar mi estancia, pues hará que las cosas
+                            cambien, e iremos llevando las cosas con calma, pero sé que estaremos llenos de gozo al
+                            saber que hacemos las cosas con amor y de la mejor manera. Te amo profundamente con toda mi
+                            energía y sé que las cosas marcharán en orden. Ya anhelo verte pronto porque siento que te
+                            extraño muchísimo.</p>
+                        <a href="https://www.youtube.com/watch?v=cWh8c9N2Nxg" target="_blank" class="song-link">
+                            Aquí adjunto esta canción que no puedo dejar de escuchar y pensarte, te la regalo, amore
+                            mío.
+                        </a>
+                    </div>
+                    <div class="signature">
+                        <p>Con amor tu futuro esposo</p>
+                        <p class="att">Para la mujer más hermosa del planeta tierra</p>
                     </div>
                 </div>
             </div>
@@ -548,7 +746,7 @@
             }
 
             // Manejar el clic en el toggle
-            audioToggle.addEventListener('change', function() {
+            audioToggle.addEventListener('change', function () {
                 if (this.checked) {
                     tryPlayAudio();
                 } else {
@@ -577,30 +775,30 @@
         });
 
         // --- SCRIPTS PARA LOS CORAZONES (BUBBLES) SIN SONIDO ---
-        (function() {
+        (function () {
             // Se elimina la variable ctx (AudioContext) y la función createSound
 
             function getRandomColor() {
                 var colors = ["#456", "#890", "#634", "#299", "tomato", "#fb3"],
-                idx = Math.floor(colors.length * Math.random());
+                    idx = Math.floor(colors.length * Math.random());
                 return (colors[idx]);
             }
 
             function animateIt(el, dur, delay) {
                 var animateEl = el.animate([
-                        {
-                            opacity: 0,
-                            transform: "translate(-50%, -50%) scale(0)"
-                        },
-                        {
-                            opacity: 1,
-                            transform: "translate(-50%, -50%) scale(1)"
-                        },
-                        {
-                            opacity: 0,
-                            transform: "translate(-50%, -50%) scale(1.1)"
-                        }
-                    ],
+                    {
+                        opacity: 0,
+                        transform: "translate(-50%, -50%) scale(0)"
+                    },
+                    {
+                        opacity: 1,
+                        transform: "translate(-50%, -50%) scale(1)"
+                    },
+                    {
+                        opacity: 0,
+                        transform: "translate(-50%, -50%) scale(1.1)"
+                    }
+                ],
                     {
                         duration: dur,
                         easing: "ease-out",
@@ -633,12 +831,12 @@
                 document.body.appendChild(bubble); // Se añaden al body para que floten sobre todo
 
                 return {
-                    setPosition: function(x, y) {
+                    setPosition: function (x, y) {
                         // Se posiciona el centro de la burbuja en las coordenadas del clic/toque
                         bubble.style.left = x + "px";
                         bubble.style.top = y + "px";
                     },
-                    _animate: function() {
+                    _animate: function () {
                         var animateBubble = animateIt(bubbleDummy, 1200),
                             animateHeart = animateIt(heart, 2000);
 
@@ -647,7 +845,7 @@
                             heartDur: 2000
                         };
                     },
-                    remove: function() {
+                    remove: function () {
                         bubble.remove();
                     }
                 };
@@ -689,7 +887,7 @@
             // }
             // bubbleUp(); // <--- COMENTADA ESTA LÍNEA
 
-            window.addEventListener("resize", function() {
+            window.addEventListener("resize", function () {
                 // Las variables w y h ya no son necesarias si bubbleUp() está comentada.
             }, false);
 
@@ -697,4 +895,5 @@
         })();
     </script>
 </body>
+
 </html>
